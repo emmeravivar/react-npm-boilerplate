@@ -16,8 +16,8 @@ module.exports = {
   module: {
     rules: [
       {
-        //Loader JS
-        test:[/\.js$/],
+        //Loader JS/JSX ( .js / .jsx)
+        test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         use: {
           loader: 'babel-loader',
@@ -27,15 +27,17 @@ module.exports = {
         },
       },
       {
-        //loader CSS
+        //loader CSS (.css)
         test: /\.css$/,
         use: [MiniCssExtractPlugin.loader, "css-loader"],
       },
       {
+        //Loader SASS (.scss)
         test: /\.s[ac]ss$/i,
         use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"],
       },
       {
+        //Loader para imagenes ( .png, .jpg / .jpeg / .gif)
         test: /\.(png|jpe?g|gif)$/i,
         use: [
           {
@@ -44,6 +46,9 @@ module.exports = {
         ],
       },
     ],
+  },
+  resolve: {
+    extensions: ['*', '.js', '.jsx'],
   },
   plugins: [
     new HtmlWebpackPlugin({
